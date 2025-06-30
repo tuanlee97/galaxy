@@ -1,0 +1,227 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    font-family: "Georgia", serif;
+}
+
+.parallax {
+    height: 100vh;
+    perspective: 1px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120vh;
+    transform: translateZ(-1px) scale(2);
+    z-index: -1;
+    background: linear-gradient(180deg,
+            #1a0033 0%,
+            #2a4d66 70%,
+            #1e3a5f 100%);
+}
+
+.mist {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    background: linear-gradient(to top,
+            rgba(0, 102, 102, 0.3),
+            transparent);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.foreground {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    transform: translateZ(0);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.scene {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    bottom: 15%;
+    left: 0;
+    will-change: transform;
+    opacity: 0.9;
+    transition: opacity 0.5s ease;
+}
+
+.scene-5 {
+    bottom: -30%;
+    filter: brightness(3.5);
+}
+
+.scene[data-modifier="18"] {
+    transform: translateZ(-0.18px) scale(1.18);
+}
+
+.scene[data-modifier="12"] {
+    transform: translateZ(-0.12px) scale(1.12);
+}
+
+.scene[data-modifier="8"] {
+    transform: translateZ(-0.08px) scale(1.08);
+}
+
+.scene[data-modifier="6"] {
+    transform: translateZ(-0.06px) scale(1.06);
+}
+
+.scene[data-modifier="0"] {
+    transform: translateZ(0);
+}
+
+.text-content {
+    position: absolute;
+    top: 10%;
+    right: 5%;
+    color: #d8e2ff;
+    text-align: right;
+    max-width: 600px;
+    z-index: 2;
+    pointer-events: auto;
+    animation: fadeIn 1.5s ease-in;
+}
+
+.text-content h1 {
+    font-size: 4em;
+    font-weight: 400;
+    margin-bottom: 25px;
+    text-shadow: 0 0 15px rgba(216, 226, 255, 0.8);
+    letter-spacing: 4px;
+    color: #f4e4bc;
+    text-transform: uppercase;
+    font-family: "Bebas Neue", sans-serif;
+    animation: fadeUp 1.5s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.text-content p {
+    font-size: 1.4em;
+    line-height: 1.7;
+    font-weight: 300;
+    text-shadow: 0 0 8px rgba(216, 226, 255, 0.6);
+    color: #d8e2ff;
+    animation: fadeUp 1.5s ease-out forwards;
+    animation-delay: 1s;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.signature {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 1.5em;
+    font-style: normal;
+    background: linear-gradient(45deg, #f4e4bc, #d4a373);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 20px rgba(212, 163, 115, 0.8),
+        0 0 8px rgba(244, 228, 188, 0.6);
+    margin-top: 30px;
+    letter-spacing: 2px;
+    animation: fadeUp 1.5s ease-out forwards;
+    animation-delay: 2s;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+#canvas-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .scene {
+        bottom: 25%;
+        scale: 1.5;
+    }
+
+    .scene-5 {
+        bottom: 0%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .scene {
+        bottom: 22%;
+    }
+
+    .scene-5 {
+        bottom: 5%;
+        scale: 2;
+        left: 10%;
+    }
+
+    .text-content {
+        text-align: center;
+        margin: auto;
+        inset: 0;
+        top: 15%;
+    }
+
+    .text-content h1 {
+        font-size: 2.5em;
+        letter-spacing: 2px;
+    }
+
+    .text-content p {
+        font-size: 1em;
+        line-height: 1.5;
+        padding: 0 20px;
+    }
+
+    .signature {
+        font-size: 1em;
+        margin-top: 20px;
+        position: absolute;
+        bottom: 5%;
+        left: 50%;
+        transform: translateX(-50%) !important;
+    }
+}
